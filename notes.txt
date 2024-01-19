@@ -1,0 +1,2 @@
+To build for debugging, do `go build -gcflags '-N -l' -o bin/ ./...`.
+In another window, do `dlv attach $(pgrep coniksclient)`.

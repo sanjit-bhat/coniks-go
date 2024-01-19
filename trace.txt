@@ -1,0 +1,28 @@
+Note: haven't been able to reproduce this since it happened.
+
+(((1)))
+coniks-client> register alice helloworld
+[+] Succesfully registered name: alice
+coniks-client> lookup alice
+[+] Found! Key bound to name is: [helloworld]
+coniks-client> register bob hiworld
+[+] Succesfully registered name: bob
+coniks-client> lookup bob
+[+] Found! Key bound to name is: [hiworld]
+coniks-client> lookup alice
+[+] Found! Key bound to name is: [helloworld]
+(((3)))
+coniks-client> lookup alice
+[+] Error: [coniks] The hash chain is inconsistent. Maybe the client missed an epoch in between two commands, monitoring isn't supported yet.
+coniks-client> lookup charlie
+[+] Error: [coniks] The hash chain is inconsistent. Maybe the client missed an epoch in between two commands, monitoring isn't supported yet.
+
+(((2)))
+coniks-client> lookup alice
+[+] Found! Key bound to name is: [helloworld]
+coniks-client> lookup bob
+[+] Found! Key bound to name is: [hiworld]
+coniks-client> register charlie charliekey
+[+] Succesfully registered name: charlie
+coniks-client> lookup charlie
+[+] Found! Key bound to name is: [charliekey]
