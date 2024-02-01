@@ -6,6 +6,7 @@
 package auditlog
 
 import (
+	"errors"
 	"github.com/coniks-sys/coniks-go/crypto"
 	"github.com/coniks-sys/coniks-go/crypto/sign"
 	"github.com/coniks-sys/coniks-go/protocol"
@@ -111,6 +112,15 @@ func (l ConiksAuditLog) set(dirInitHash [crypto.HashSizeByte]byte,
 func (l ConiksAuditLog) get(dirInitHash [crypto.HashSizeByte]byte) (*directoryHistory, bool) {
 	h, ok := l[dirInitHash]
 	return h, ok
+}
+
+func (l ConiksAuditLog) AuditId(dirInitHash [crypto.HashSizeByte]byte, msg *protocol.Response) error {
+	h, ok := l.get(dirInitHash)
+	if !ok {
+		return errors.New("auditor: could not find id in map")
+	}
+	err := h.Audit(msg)
+	return err
 }
 
 // InitHistory creates a new directory history for the key directory addr
