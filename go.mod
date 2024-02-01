@@ -6,6 +6,7 @@ require (
 	github.com/BurntSushi/toml v0.3.0
 	github.com/dghubble/go-twitter v0.0.0-20170910035229-c4115fa44a92
 	github.com/dghubble/oauth1 v0.4.0
+	github.com/qdm12/reprint v0.0.0-20200326205758-722754a53494
 	github.com/spf13/cobra v0.0.1
 	github.com/syndtr/goleveldb v0.0.0-20171214120811-34011bf325bc
 	go.uber.org/zap v1.7.1

@@ -15,6 +15,7 @@ import (
 	"github.com/coniks-sys/coniks-go/crypto/vrf"
 	"github.com/coniks-sys/coniks-go/merkletree"
 	"github.com/coniks-sys/coniks-go/protocol"
+	"github.com/qdm12/reprint"
 )
 
 // A ConiksDirectory maintains the underlying persistent
@@ -29,6 +30,12 @@ type ConiksDirectory struct {
 	useTBs   bool
 	tbs      map[string]*protocol.TemporaryBinding
 	policies *protocol.Policies
+}
+
+func (src *ConiksDirectory) Fork() (*ConiksDirectory, error) {
+	dst := &ConiksDirectory{}
+	err := reprint.FromTo(src, dst)
+	return dst, err
 }
 
 // New constructs a new ConiksDirectory given the key server's PAD
